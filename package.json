@@ -1,0 +1,13 @@
+{
+  "name": "demo-imaging-automation",
+  "version": "1.0.0",
+  "description": "Smart Diagnostic Centre Automation Demo for Demo Imaging, Vaishali, Ghaziabad",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static HTML build ready'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

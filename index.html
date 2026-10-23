@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Imaging | Smart Diagnostic Centre Automation Demo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        teal: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        },
+                        sage: {
+                            500: '#84cc16',
+                            600: '#65a30d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-teal-100 selection:text-teal-800">
+
+    <!-- DEMO MODE NOTICE BANNER -->
+    <div class="bg-navy-900 text-teal-200 px-4 py-2 text-xs font-medium text-center border-b border-teal-800/40 flex items-center justify-center gap-2">
+        <i data-lucide="info" class="w-4 h-4 text-teal-400 shrink-0"></i>
+        <span><strong>SALES DEMO PROTOTYPE:</strong> Demo Imaging, Vaishali, Ghaziabad. All bookings, WhatsApp messages, and notifications are simulated for demonstration purposes.</span>
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="w-10 h-10 rounded-lg bg-teal-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    DI
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-navy-900 block leading-tight">Demo Imaging</span>
+                    <span class="text-xs text-slate-500 font-medium">Vaishali, Ghaziabad</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-1 font-medium text-sm text-slate-600">
+                <button onclick="switchTab('home')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition text-teal-600 font-semibold" data-target="home">Home</button>
+                <button onclick="switchTab('booking')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition" data-target="booking">Book Appointment</button>
+                <button onclick="switchTab('services')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition" data-target="services">Our Services</button>
+                <button onclick="switchTab('patient-help')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition" data-target="patient-help">Patient Help</button>
+                <button onclick="switchTab('contact')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition" data-target="contact">Contact</button>
+                <button onclick="switchTab('dashboard')" class="nav-btn px-3 py-2 rounded-lg bg-teal-50 text-teal-700 hover:bg-teal-100 transition border border-teal-200 flex items-center gap-1.5" data-target="dashboard">
+                    <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Staff Dashboard
+                </button>
+                <button onclick="switchTab('demo-request')" class="nav-btn ml-2 px-4 py-2 rounded-lg bg-navy-900 text-white hover:bg-navy-800 transition shadow-sm font-semibold" data-target="demo-request">Request Free Demo</button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-600 hover:text-navy-900">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100">Home</button>
+            <button onclick="switchTab('booking'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100">Book Appointment</button>
+            <button onclick="switchTab('services'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100">Our Services</button>
+            <button onclick="switchTab('patient-help'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100">Patient Help</button>
+            <button onclick="switchTab('contact'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-100">Contact</button>
+            <button onclick="switchTab('dashboard'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg font-medium text-teal-700 bg-teal-50">Staff Dashboard</button>
+            <button onclick="switchTab('demo-request'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-lg font-medium text-white bg-navy-900">Request Free Demo</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- TAB 1: HOME -->
+        <section id="tab-home" class="tab-content">
+            <div class="relative bg-gradient-to-b from-teal-50/50 to-white py-16 sm:py-24 border-b border-slate-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-semibold uppercase tracking-wider">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Next-Gen Clinic Automation
+                            </div>
+                            <h1 class="text-4xl sm:text-5xl font-extrabold text-navy-900 tracking-tight leading-tight">
+                                Your Appointment. Your Time. <br><span class="text-teal-600">A Smoother Diagnostic Experience.</span>
+                            </h1>
+                            <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
+                                Explore a smarter way to manage diagnostic appointments, routine enquiries and patient communication. Choose an available appointment slot, receive reminders and help the centre coordinate visits more efficiently.
+                            </p>
+                            <div class="flex flex-wrap items-center gap-4 pt-2">
+                                <button onclick="switchTab('booking')" class="px-6 py-3.5 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition shadow-lg shadow-teal-600/20 flex items-center gap-2">
+                                    <i data-lucide="calendar-plus" class="w-5 h-5"></i> Book an Appointment
+                                </button>
+                                <button onclick="openPitchModal()" class="px-6 py-3.5 rounded-xl bg-white text-navy-900 font-semibold border border-slate-300 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm">
+                                    <i data-lucide="presentation" class="w-5 h-5 text-teal-600"></i> Client Sales Pitch Tour
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-500 italic">
+                                *Note: Scheduled appointments reduce avoidable waiting, while actual waiting times depend on scan duration and clinical priorities.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-200 relative overflow-hidden">
+                                <div class="absolute top-0 right-0 bg-teal-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Live Simulation</div>
+                                <h3 class="font-bold text-navy-900 text-lg mb-4 flex items-center gap-2">
+                                    <i data-lucide="activity" class="w-5 h-5 text-teal-600"></i> Clinic Operations at a Glance
+                                </h3>
+                                <div class="space-y-4 text-sm">
+                                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold">12</div>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Confirmed Scans Today</p>
+                                                <p class="text-xs text-slate-500">Vaishali Branch, Ghaziabad</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-semibold">On Schedule</span>
+                                    </div>
+                                    <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">4</div>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">WhatsApp Reminders Sent</p>
+                                                <p class="text-xs text-slate-500">Automated 2-hour prior ping</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 font-semibold">Delivered</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+                                    <span>Powered by AI Agent Engine</span>
+                                    <button onclick="switchTab('dashboard')" class="text-teal-600 font-semibold hover:underline">Open Staff Dashboard →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <h2 class="text-3xl font-bold text-navy-900 tracking-tight">Built for Modern Diagnostic Centres</h2>
+                        <p class="text-slate-600 mt-2">Streamline the entire patient journey from initial enquiry to scan completion.</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-md transition">
+                            <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
+                                <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-900 mb-2">Smart Appointment Scheduling</h3>
+                            <p class="text-sm text-slate-600">Real-time slot allocation with equipment capacity buffers and instant double-booking prevention.</p>
+                        </div>
+                        <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-md transition">
+                            <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
+                                <i data-lucide="message-square" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-900 mb-2">WhatsApp Confirmation & Reminders</h3>
+                            <p class="text-sm text-slate-600">Automated messaging for instant booking acknowledgments, pre-test instructions, and timely reminders.</p>
+                        </div>
+                        <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:shadow-md transition">
+                            <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
+                                <i data-lucide="bot" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-900 mb-2">AI-Powered Enquiry Assistance</h3>
+                            <p class="text-sm text-slate-600">24/7 intelligent virtual assistant answering FAQs on operating hours, prep guides, and pricing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: BOOK AN APPOINTMENT -->
+        <section id="tab-booking" class="tab-content hidden py-12">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-navy-900">Smart Appointment Booking</h2>
+                    <p class="text-slate-600 mt-2">Select your required diagnostic service and preferred slot at Demo Imaging, Vaishali.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+                    <!-- Progress Tracker -->
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-500 overflow-x-auto">
+                        <div id="step-ind-1" class="flex items-center gap-2 text-teal-600"><span class="w-6 h-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold">1</span> Service</div>
+                        <div class="w-8 h-px bg-slate-300"></div>
+                        <div id="step-ind-2" class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold">2</span> Date & Time</div>
+                        <div class="w-8 h-px bg-slate-300"></div>
+                        <div id="step-ind-3" class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold">3</span> Visitor Details</div>
+                        <div class="w-8 h-px bg-slate-300"></div>
+                        <div id="step-ind-4" class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold">4</span> Confirmation</div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div id="booking-step-1" class="p-6 sm:p-8 space-y-6">
+                        <h3 class="text-lg font-bold text-navy-900">Select Diagnostic Service</h3>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition flex flex-col justify-between" onclick="selectService('Ultrasound', '20-30 mins', 'Fasting required for abdominal scans.')">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="font-bold text-navy-900 text-base">Ultrasound</h4>
+                                        <span class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded-md font-semibold">~25 mins</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500">High-resolution real-time imaging for internal organs.</p>
+                                </div>
+                                <div class="mt-4 flex items-center text-xs font-semibold text-teal-600">
+                                    <input type="radio" name="selected_service" value="Ultrasound" class="accent-teal-600 mr-2" checked> Select Service
+                                </div>
+                            </label>
+
+                            <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition flex flex-col justify-between" onclick="selectService('X-ray', '10-15 mins', 'No special preparation required.')">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="font-bold text-navy-900 text-base">Digital X-ray</h4>
+                                        <span class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded-md font-semibold">~15 mins</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500">Low-dose digital radiography for bone and chest imaging.</p>
+                                </div>
+                                <div class="mt-4 flex items-center text-xs font-semibold text-teal-600">
+                                    <input type="radio" name="selected_service" value="X-ray" class="accent-teal-600 mr-2"> Select Service
+                                </div>
+                            </label>
+
+                            <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition flex flex-col justify-between" onclick="selectService('CT Scan', '30-45 mins', 'Creatinine test may be required for contrast studies.')">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="font-bold text-navy-900 text-base">CT Scan</h4>
+                                        <span class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded-md font-semibold">~35 mins</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500">Advanced cross-sectional imaging with multi-slice clarity.</p>
+                                </div>
+                                <div class="mt-4 flex items-center text-xs font-semibold text-teal-600">
+                                    <input type="radio" name="selected_service" value="CT Scan" class="accent-teal-600 mr-2"> Select Service
+                                </div>
+                            </label>
+
+                            <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition flex flex-col justify-between" onclick="selectService('MRI Scan', '45-60 mins', 'No metallic objects allowed.')">
+                                <div>
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="font-bold text-navy-900 text-base">MRI Scan</h4>
+                                        <span class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded-md font-semibold">~50 mins</span>
+                                    </div>
+                                    <p class="text-xs text-slate-500">High-field magnetic imaging for brain, spine, and joints.</p>
+                                </div>
+                                <div class="mt-4 flex items-center text-xs font-semibold text-teal-600">
+                                    <input type="radio" name="selected_service" value="MRI Scan" class="accent-teal-600 mr-2"> Select Service
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex justify-end pt-4">
+                            <button onclick="goToBookingStep(2)" class="px-6 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition">Next: Choose Date & Time →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="booking-step-2" class="p-6 sm:p-8 space-y-6 hidden">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-navy-900">Choose Date & Time Slot</h3>
+                            <button onclick="goToBookingStep(1)" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">← Back</button>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-2 uppercase tracking-wider">Select Date</label>
+                                <input type="date" id="booking-date" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:outline-none font-medium text-slate-800" onchange="updateSlots()">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-2 uppercase tracking-wider">Available Time Slots</label>
+                                <div id="slots-container" class="grid grid-cols-2 gap-2.5 max-h-48 overflow-y-auto p-1"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button onclick="goToBookingStep(1)" class="px-6 py-3 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition">Back</button>
+                            <button onclick="goToBookingStep(3)" class="px-6 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition">Next: Visitor Details →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="booking-step-3" class="p-6 sm:p-8 space-y-6 hidden">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-bold text-navy-900">Visitor Contact Details</h3>
+                            <button onclick="goToBookingStep(2)" class="text-xs text-slate-500 hover:text-slate-800 font-semibold">← Back</button>
+                        </div>
+                        <div class="space-y-4 max-w-xl">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Full Name *</label>
+                                <input type="text" id="visitor-name" placeholder="e.g. Rahul Sharma" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Mobile Number (WhatsApp Enabled) *</label>
+                                <div class="flex">
+                                    <span class="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-slate-300 bg-slate-100 text-slate-600 text-sm font-semibold">+91</span>
+                                    <input type="tel" id="visitor-phone" placeholder="98765 43210" class="w-full p-3 rounded-r-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 pt-2">
+                                <input type="checkbox" id="visitor-consent" class="mt-1 accent-teal-600 w-4 h-4 rounded">
+                                <label for="visitor-consent" class="text-xs text-slate-600 leading-relaxed">
+                                    I consent to receive simulated appointment confirmation and reminders via WhatsApp from Demo Imaging, Vaishali.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button onclick="goToBookingStep(2)" class="px-6 py-3 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition">Back</button>
+                            <button onclick="submitBooking()" class="px-6 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition shadow-md">Confirm Booking</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div id="booking-step-4" class="p-8 text-center space-y-6 hidden">
+                        <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                            <i data-lucide="check-circle" class="w-10 h-10"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs uppercase tracking-wider bg-teal-100 text-teal-800 font-bold px-3 py-1 rounded-full">Simulated Booking Confirmed</span>
+                            <h3 class="text-2xl font-bold text-navy-900 mt-3">Appointment Request Recorded!</h3>
+                            <p class="text-slate-600 text-sm mt-1">Reference ID: <strong id="conf-ref" class="text-navy-900 font-mono">DI-84920</strong></p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 max-w-lg mx-auto text-left space-y-2">
+                            <div class="flex items-center gap-2 text-emerald-800 font-bold text-xs uppercase">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i> Simulated WhatsApp Dispatch
+                            </div>
+                            <p id="whatsapp-preview-msg" class="text-xs text-emerald-900 font-mono bg-white p-3 rounded-lg border border-emerald-100"></p>
+                        </div>
+                        <div class="flex justify-center gap-4 pt-4">
+                            <button onclick="resetBooking()" class="px-6 py-3 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition">Book Another</button>
+                            <button onclick="switchTab('dashboard')" class="px-6 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition">View in Dashboard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: SERVICES -->
+        <section id="tab-services" class="tab-content hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold text-navy-900">Diagnostic Services Catalogue</h2>
+                    <p class="text-slate-600 mt-2">Explore illustrative categories available for demonstration at Demo Imaging, Vaishali.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-navy-900 mb-2">Ultrasound</h3>
+                            <p class="text-sm text-slate-600 mb-4">High-resolution real-time imaging for internal organs.</p>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 rounded-xl bg-teal-50 text-teal-700 hover:bg-teal-100 font-semibold transition text-sm">Check Slots</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-navy-900 mb-2">Digital X-ray</h3>
+                            <p class="text-sm text-slate-600 mb-4">Low-dose digital radiography for bone and chest imaging.</p>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 rounded-xl bg-teal-50 text-teal-700 hover:bg-teal-100 font-semibold transition text-sm">Check Slots</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-navy-900 mb-2">CT Scan</h3>
+                            <p class="text-sm text-slate-600 mb-4">Advanced cross-sectional imaging with multi-slice clarity.</p>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 rounded-xl bg-teal-50 text-teal-700 hover:bg-teal-100 font-semibold transition text-sm">Check Slots</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: PATIENT HELP -->
+        <section id="tab-patient-help" class="tab-content hidden py-12">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-navy-900">Patient Help & FAQs</h2>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                    <h3 class="font-bold text-navy-900 mb-2">What should I bring on the day of my scan?</h3>
+                    <p class="text-sm text-slate-600">Please bring your doctor's prescription, valid photo ID, and booking reference number.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: CONTACT -->
+        <section id="tab-contact" class="tab-content hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm max-w-xl mx-auto space-y-4">
+                    <h3 class="text-xl font-bold text-navy-900">Centre Information</h3>
+                    <p class="text-sm text-slate-600">Plot No. 42, Sector 4, Vaishali, Ghaziabad, Uttar Pradesh 201010</p>
+                    <p class="text-sm text-slate-600">Phone: +91 98765 43210</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: STAFF DASHBOARD -->
+        <section id="tab-dashboard" class="tab-content hidden py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-3xl font-bold text-navy-900">Staff Operations Dashboard</h2>
+                    <button onclick="renderDashboardTable()" class="px-4 py-2 bg-teal-600 text-white rounded-xl text-sm font-semibold">Refresh</button>
+                </div>
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-600 border-b border-slate-200 text-xs uppercase">
+                                <th class="p-4">Reference</th>
+                                <th class="p-4">Visitor Name</th>
+                                <th class="p-4">Service</th>
+                                <th class="p-4">Date & Time</th>
+                                <th class="p-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashboard-table-body" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 7: REQUEST DEMO -->
+        <section id="tab-demo-request" class="tab-content hidden py-12">
+            <div class="max-w-xl mx-auto px-4">
+                <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-xl">
+                    <h2 class="text-2xl font-bold text-navy-900 mb-4">Request a Free Demo</h2>
+                    <form onsubmit="handleDemoRequest(event)" class="space-y-4 text-sm">
+                        <input type="text" required placeholder="Clinic Name" class="w-full p-3 rounded-xl border border-slate-300">
+                        <input type="tel" required placeholder="Phone Number" class="w-full p-3 rounded-xl border border-slate-300">
+                        <button type="submit" class="w-full py-3 rounded-xl bg-teal-600 text-white font-semibold">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FLOATING CHATBOT -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div id="chat-window" class="hidden w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col mb-4">
+            <div class="bg-navy-900 text-white px-4 py-3 flex justify-between">
+                <span class="font-bold text-sm">Demo Assistant</span>
+                <button onclick="toggleChat()">✕</button>
+            </div>
+            <div id="chat-messages" class="p-4 h-60 overflow-y-auto space-y-2 bg-slate-50 text-xs">
+                <div class="bg-white p-2.5 rounded-xl border">Hello! How can I help you with Demo Imaging today?</div>
+            </div>
+            <div class="p-2 border-t flex gap-2">
+                <input type="text" id="chat-input" placeholder="Ask a question..." class="flex-grow p-2 text-xs border rounded-lg" onkeypress="if(event.key==='Enter')sendChatMessage()">
+                <button onclick="sendChatMessage()" class="bg-teal-600 text-white px-3 py-1 rounded-lg text-xs">Send</button>
+            </div>
+        </div>
+        <button onclick="toggleChat()" class="w-14 h-14 rounded-full bg-teal-600 text-white shadow-xl flex items-center justify-center">💬</button>
+    </div>
+
+    <!-- SALES PITCH MODAL -->
+    <div id="pitch-modal" class="hidden fixed inset-0 z-50 bg-navy-900/80 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4">
+            <h3 class="text-xl font-bold text-navy-900">Executive Sales Tour</h3>
+            <p class="text-sm text-slate-600">This prototype demonstrates how Demo Imaging can eliminate reception queues, automate WhatsApp reminders, and streamline scheduling.</p>
+            <button onclick="closePitchModal()" class="w-full py-2.5 bg-teal-600 text-white rounded-xl text-sm font-semibold">Got it</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        lucide.createIcons();
+        let currentService = { name: 'Ultrasound', duration: '20-30 mins' };
+        let appointments = [
+            { ref: 'DI-84910', name: 'Sunita Sharma', service: 'Ultrasound', datetime: '2026-10-24 09:00 AM', status: 'Confirmed' },
+            { ref: 'DI-84911', name: 'Amit Verma', service: 'CT Scan', datetime: '2026-10-24 10:15 AM', status: 'Confirmed' }
+        ];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (tabId === 'dashboard') renderDashboardTable();
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function selectService(name, duration) {
+            currentService = { name, duration };
+        }
+
+        function goToBookingStep(step) {
+            for (let i = 1; i <= 4; i++) document.getElementById(`booking-step-${i}`).classList.add('hidden');
+            document.getElementById(`booking-step-${step}`).classList.remove('hidden');
+            if (step === 2) {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('booking-date').min = today;
+                document.getElementById('booking-date').value = today;
+                updateSlots();
+            }
+        }
+
+        function updateSlots() {
+            const container = document.getElementById('slots-container');
+            container.innerHTML = '';
+            ['09:00 AM', '10:30 AM', '11:15 AM', '02:00 PM', '03:30 PM'].forEach(t => {
+                const btn = document.createElement('button');
+                btn.className = "p-2.5 rounded-xl border text-xs font-semibold bg-white text-slate-700 hover:border-teal-500 hover:bg-teal-50";
+                btn.innerText = t;
+                btn.onclick = () => {
+                    document.querySelectorAll('#slots-container button').forEach(b => b.classList.remove('bg-teal-50', 'border-teal-600'));
+                    btn.classList.add('bg-teal-50', 'border-teal-600');
+                    window.selectedTime = t;
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function submitBooking() {
+            const name = document.getElementById('visitor-name').value;
+            const phone = document.getElementById('visitor-phone').value;
+            if (!name || !phone || !window.selectedTime) {
+                alert('Please fill in your name, phone number, and select a time slot.');
+                return;
+            }
+            const refId = 'DI-' + Math.floor(10000 + Math.random() * 90000);
+            appointments.unshift({ ref: refId, name, service: currentService.name, datetime: `${document.getElementById('booking-date').value} ${window.selectedTime}`, status: 'Confirmed' });
+            document.getElementById('conf-ref').innerText = refId;
+            document.getElementById('whatsapp-preview-msg').innerText = `"Hello ${name}, your appointment for ${currentService.name} is confirmed for ${window.selectedTime}. Ref: ${refId}."`;
+            goToBookingStep(4);
+        }
+
+        function resetBooking() { goToBookingStep(1); }
+
+        function renderDashboardTable() {
+            const tbody = document.getElementById('dashboard-table-body');
+            tbody.innerHTML = '';
+            appointments.forEach(app => {
+                tbody.innerHTML += `<tr class="border-b"><td class="p-4 font-mono font-bold">${app.ref}</td><td class="p-4">${app.name}</td><td class="p-4">${app.service}</td><td class="p-4">${app.datetime}</td><td class="p-4"><span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs">${app.status}</span></td></tr>`;
+            });
+        }
+
+        function toggleChat() { document.getElementById('chat-window').classList.toggle('hidden'); }
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            if(!input.value) return;
+            const msg = input.value;
+            const container = document.getElementById('chat-messages');
+            container.innerHTML += `<div class="bg-teal-600 text-white p-2 rounded-lg text-right">${msg}</div>`;
+            input.value = '';
+            setTimeout(() => {
+                container.innerHTML += `<div class="bg-white p-2 rounded-lg border">Thank you for your enquiry. Please use our booking tab or call +91 98765 43210.</div>`;
+                container.scrollTop = container.scrollHeight;
+            }, 500);
+        }
+
+        function openPitchModal() { document.getElementById('pitch-modal').classList.remove('hidden'); }
+        function closePitchModal() { document.getElementById('pitch-modal').classList.add('hidden'); }
+        function handleDemoRequest(e) { e.preventDefault(); alert('Demo request submitted successfully!'); switchTab('home'); }
+    </script>
+</body>
+</html>
