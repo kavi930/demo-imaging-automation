@@ -50,7 +50,7 @@
             <nav class="hidden lg:flex items-center gap-1 font-medium text-sm text-slate-600">
                 <button onclick="switchTab('home')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition text-teal-600 font-semibold" data-target="home">Home</button>
                 <button onclick="switchTab('booking')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition" data-target="booking">Book Appointment</button>
-                <button onclick="switchTab('services')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition" data-target="services">Our Services</button>
+                <button onclick="switchTab('services')" class="nav-btn px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-teal-600 transition" data-target="services">Our Services & Tests</button>
                 <button onclick="switchTab('dashboard')" class="nav-btn px-3 py-2 rounded-lg bg-teal-50 text-teal-700 hover:bg-teal-100 transition border border-teal-200 flex items-center gap-1.5" data-target="dashboard">
                     <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Staff Dashboard
                 </button>
@@ -81,14 +81,14 @@
                                 Your Appointment. Your Time. <br><span class="text-teal-600">A Smoother Diagnostic Experience.</span>
                             </h1>
                             <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
-                                Explore a smarter way to manage diagnostic appointments, enquiries and patient communication in Vaishali. Choose an available slot, receive reminders and coordinate visits efficiently.
+                                Explore a smarter way to manage diagnostic appointments, prerequisites, enquiries and patient communication in Vaishali. Choose an available slot, receive instant WhatsApp reminders and coordinate visits efficiently.
                             </p>
                             <div class="flex flex-wrap items-center gap-4 pt-2">
                                 <button onclick="switchTab('booking')" class="px-6 py-3.5 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition shadow-lg shadow-teal-600/20 flex items-center gap-2">
                                     <i data-lucide="calendar-plus" class="w-5 h-5"></i> Book an Appointment
                                 </button>
-                                <button onclick="openPitchModal()" class="px-6 py-3.5 rounded-xl bg-white text-navy-900 font-semibold border border-slate-300 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm">
-                                    <i data-lucide="presentation" class="w-5 h-5 text-teal-600"></i> Client Sales Tour
+                                <button onclick="switchTab('services')" class="px-6 py-3.5 rounded-xl bg-white text-navy-900 font-semibold border border-slate-300 hover:bg-slate-50 transition flex items-center gap-2 shadow-sm">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-teal-600"></i> View Test Prerequisites
                                 </button>
                             </div>
                             <p class="text-xs text-slate-500 italic">*Scheduled appointments reduce avoidable waiting, actual wait times depend on clinical priorities.</p>
@@ -102,14 +102,14 @@
                                 <div class="space-y-4 text-sm">
                                     <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold">12</div>
+                                            <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center font-bold">14</div>
                                             <div><p class="font-semibold text-slate-800">Confirmed Scans</p><p class="text-xs text-slate-500">Booked online</p></div>
                                         </div>
                                         <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-semibold">On Track</span>
                                     </div>
                                     <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
                                         <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">4</div>
+                                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">6</div>
                                             <div><p class="font-semibold text-slate-800">WhatsApp Reminders</p><p class="text-xs text-slate-500">Sent automatically</p></div>
                                         </div>
                                         <span class="text-xs px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 font-semibold">Delivered</span>
@@ -125,24 +125,25 @@
                 </div>
             </div>
 
-            <!-- World-Class Diagnostic Facilities Section -->
+            <!-- Verified World-Class Diagnostic Facilities Section -->
             <div class="py-20 bg-slate-50">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto mb-16">
                         <h2 class="text-4xl font-extrabold text-navy-900 tracking-tight">World-Class Diagnostic Facilities</h2>
-                        <p class="text-xl text-slate-600 mt-4">State-of-the-art technology combined with a comfortable patient environment in the heart of Vaishali.</p>
+                        <p class="text-xl text-slate-600 mt-4">State-of-the-art technology combined with a comfortable patient environment in the heart of Vaishali, Ghaziabad.</p>
                     </div>
                     
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <!-- Facility 1: MRI -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
                             <div>
-                                <div class="h-48 bg-slate-100 overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop" alt="Advanced MRI Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                <div class="h-48 bg-slate-100 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" alt="Advanced MRI Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                    <span class="absolute top-3 left-3 bg-navy-900/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur">1.5T High-Field</span>
                                 </div>
                                 <div class="p-6">
                                     <h3 class="text-lg font-bold text-navy-900">Advanced MRI Suite</h3>
-                                    <p class="text-sm text-slate-600 mt-2">High-definition imaging providing superior diagnostic accuracy for neurology and orthopedics.</p>
+                                    <p class="text-sm text-slate-600 mt-2">High-definition imaging providing superior diagnostic accuracy for neurology, spine, and musculoskeletal disorders.</p>
                                 </div>
                             </div>
                             <div class="px-6 pb-6">
@@ -153,12 +154,13 @@
                         <!-- Facility 2: CT Scan -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
                             <div>
-                                <div class="h-48 bg-slate-100 overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" alt="Multi-Slice CT Scanner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                <div class="h-48 bg-slate-100 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop" alt="Multi-Slice CT Scanner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                    <span class="absolute top-3 left-3 bg-navy-900/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur">128-Slice</span>
                                 </div>
                                 <div class="p-6">
                                     <h3 class="text-lg font-bold text-navy-900">Multi-Slice CT Scanner</h3>
-                                    <p class="text-sm text-slate-600 mt-2">Fast, low-dose CT scans for comprehensive body imaging and cardiac diagnostics.</p>
+                                    <p class="text-sm text-slate-600 mt-2">Ultra-fast, low-dose CT scans for comprehensive body imaging, high-speed angiography, and trauma care.</p>
                                 </div>
                             </div>
                             <div class="px-6 pb-6">
@@ -169,12 +171,13 @@
                         <!-- Facility 3: Ultrasound -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
                             <div>
-                                <div class="h-48 bg-slate-100 overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop" alt="Premium Ultrasound" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                <div class="h-48 bg-slate-100 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" alt="Premium Ultrasound & Color Doppler" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                    <span class="absolute top-3 left-3 bg-navy-900/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur">4D Color Doppler</span>
                                 </div>
                                 <div class="p-6">
                                     <h3 class="text-lg font-bold text-navy-900">Premium Ultrasound</h3>
-                                    <p class="text-sm text-slate-600 mt-2">Real-time high-resolution imaging for OB/GYN, abdominal, and vascular studies.</p>
+                                    <p class="text-sm text-slate-600 mt-2">Real-time high-resolution 4D imaging for obstetric care, anomaly scans, abdominal, and vascular color doppler studies.</p>
                                 </div>
                             </div>
                             <div class="px-6 pb-6">
@@ -185,12 +188,13 @@
                         <!-- Facility 4: X-Ray -->
                         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
                             <div>
-                                <div class="h-48 bg-slate-100 overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=800&auto=format&fit=crop" alt="Digital X-Ray System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                <div class="h-48 bg-slate-100 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop" alt="Digital X-Ray System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                                    <span class="absolute top-3 left-3 bg-navy-900/80 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur">DR System</span>
                                 </div>
                                 <div class="p-6">
                                     <h3 class="text-lg font-bold text-navy-900">Digital X-Ray System</h3>
-                                    <p class="text-sm text-slate-600 mt-2">Instant digital radiography with minimal radiation exposure for skeletal and chest imaging.</p>
+                                    <p class="text-sm text-slate-600 mt-2">Instant digital radiography with minimal radiation exposure for precise skeletal, spine, and chest evaluations.</p>
                                 </div>
                             </div>
                             <div class="px-6 pb-6">
@@ -228,17 +232,17 @@
                         <div class="grid sm:grid-cols-2 gap-4">
                             <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition" onclick="selectService('Ultrasound', '25 mins')">
                                 <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-navy-900">Ultrasound</h4><span class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded-md font-semibold">~25 mins</span></div>
-                                <p class="text-xs text-slate-500">Internal imaging. Prep required for abdomen.</p>
+                                <p class="text-xs text-slate-500">Abdominal & pelvic imaging.</p>
                                 <div class="mt-3 text-xs font-semibold text-teal-600"><input type="radio" name="service" class="accent-teal-600 mr-2" checked> Select</div>
                             </label>
-                            <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition" onclick="selectService('X-ray', '15 mins')">
+                            <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition" onclick="selectService('Digital X-ray', '15 mins')">
                                 <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-navy-900">Digital X-ray</h4><span class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded-md font-semibold">~15 mins</span></div>
-                                <p class="text-xs text-slate-500">Bone and chest imaging. No prep needed.</p>
+                                <p class="text-xs text-slate-500">Chest & skeletal radiography.</p>
                                 <div class="mt-3 text-xs font-semibold text-teal-600"><input type="radio" name="service" class="accent-teal-600 mr-2"> Select</div>
                             </label>
                             <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition" onclick="selectService('CT Scan', '35 mins')">
                                 <div class="flex justify-between items-start mb-2"><h4 class="font-bold text-navy-900">CT Scan</h4><span class="text-xs bg-teal-50 text-teal-700 px-2.5 py-1 rounded-md font-semibold">~35 mins</span></div>
-                                <p class="text-xs text-slate-500">Advanced cross-sectional imaging.</p>
+                                <p class="text-xs text-slate-500">Advanced 128-slice cross-sectional scan.</p>
                                 <div class="mt-3 text-xs font-semibold text-teal-600"><input type="radio" name="service" class="accent-teal-600 mr-2"> Select</div>
                             </label>
                             <label class="border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-teal-500 transition" onclick="selectService('MRI Scan', '50 mins')">
@@ -281,28 +285,109 @@
             </div>
         </section>
 
-        <!-- TAB: SERVICES -->
+        <!-- TAB: SERVICES & TEST PREREQUISITES -->
         <section id="tab-services" class="tab-content hidden py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-navy-900 mb-12 text-center">Services Catalogue</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
-                        <h3 class="text-xl font-bold text-navy-900">Ultrasound</h3>
-                        <p class="text-sm text-slate-600">Abdominal, Pelvic, Obstetric scans using high-end GE equipment.</p>
-                        <div class="text-xs font-medium text-slate-500 pt-2">Duration: ~25 mins</div>
-                        <button onclick="switchTab('booking')" class="w-full py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-semibold">Book</button>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold text-navy-900">Services Catalogue & Test Prerequisites</h2>
+                    <p class="text-slate-600 mt-2">Explore our expanded diagnostic tests and review mandatory preparation guidelines before your visit.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">Ultrasound & Color Doppler</h3>
+                                <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded font-semibold">~25 mins</span>
+                            </div>
+                            <p class="text-sm text-slate-600">Abdomen, Pelvis, Obstetric anomaly scans, and vascular studies.</p>
+                            <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+                                <strong class="block font-semibold">Prerequisite / Preparation:</strong>
+                                <span>• Upper Abdomen: 6 hours strict fasting required.<br>• Pelvic / Obstetric: Full urinary bladder (drink 4-5 glasses of water 1 hour prior).</span>
+                            </div>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 bg-teal-600 text-white rounded-xl text-sm font-semibold hover:bg-teal-700 transition">Book Slot</button>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
-                        <h3 class="text-xl font-bold text-navy-900">Digital X-ray</h3>
-                        <p class="text-sm text-slate-600">Chest, Spine, Skeletal X-rays with instant digital results.</p>
-                        <div class="text-xs font-medium text-slate-500 pt-2">Duration: ~15 mins</div>
-                        <button onclick="switchTab('booking')" class="w-full py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-semibold">Book</button>
+
+                    <!-- Service 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">CT Scan (Computed Tomography)</h3>
+                                <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded font-semibold">~35 mins</span>
+                            </div>
+                            <p class="text-sm text-slate-600">Brain, Chest, Abdomen, and High-Resolution Angiography.</p>
+                            <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+                                <strong class="block font-semibold">Prerequisite / Preparation:</strong>
+                                <span>• Contrast CT: Serum Creatinine blood test report mandatory.<br>• 4-hour fasting required for abdominal contrast studies.<br>• Remove all metallic objects.</span>
+                            </div>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 bg-teal-600 text-white rounded-xl text-sm font-semibold hover:bg-teal-700 transition">Book Slot</button>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
-                        <h3 class="text-xl font-bold text-navy-900">CT Scan</h3>
-                        <p class="text-sm text-slate-600">Brain, Body, Chest scans. Contrast and Non-contrast.</p>
-                        <div class="text-xs font-medium text-slate-500 pt-2">Duration: ~35 mins</div>
-                        <button onclick="switchTab('booking')" class="w-full py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-semibold">Book</button>
+
+                    <!-- Service 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">MRI Scan</h3>
+                                <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded font-semibold">~50 mins</span>
+                            </div>
+                            <p class="text-sm text-slate-600">Brain, Spine, Joints, and Soft Tissue high-field imaging.</p>
+                            <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+                                <strong class="block font-semibold">Prerequisite / Preparation:</strong>
+                                <span>• Strictly NO metallic objects, cards, or jewellery.<br>• Inform staff of pacemakers, metallic implants, or severe claustrophobia.</span>
+                            </div>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 bg-teal-600 text-white rounded-xl text-sm font-semibold hover:bg-teal-700 transition">Book Slot</button>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">Digital X-Ray</h3>
+                                <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded font-semibold">~15 mins</span>
+                            </div>
+                            <p class="text-sm text-slate-600">Chest, Spine, Extremities, and Orthopedic radiography.</p>
+                            <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+                                <strong class="block font-semibold">Prerequisite / Preparation:</strong>
+                                <span>• No special preparation required.<br>• Remove necklaces, buttons, or metal zippers near the scan area.</span>
+                            </div>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 bg-teal-600 text-white rounded-xl text-sm font-semibold hover:bg-teal-700 transition">Book Slot</button>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">Mammography</h3>
+                                <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded font-semibold">~20 mins</span>
+                            </div>
+                            <p class="text-sm text-slate-600">Low-dose digital breast screening for early detection.</p>
+                            <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+                                <strong class="block font-semibold">Prerequisite / Preparation:</strong>
+                                <span>• Do not apply deodorant, talcum powder, or lotion on the day of the test.<br>• Bring previous mammogram films if available.</span>
+                            </div>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 bg-teal-600 text-white rounded-xl text-sm font-semibold hover:bg-teal-700 transition">Book Slot</button>
+                    </div>
+
+                    <!-- Service 6 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">ECG & Heart Screening</h3>
+                                <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded font-semibold">~10 mins</span>
+                            </div>
+                            <p class="text-sm text-slate-600">12-lead resting electrocardiogram.</p>
+                            <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+                                <strong class="block font-semibold">Prerequisite / Preparation:</strong>
+                                <span>• Wear comfortable two-piece clothing.<br>• Avoid applying heavy body oils or creams on the chest area.</span>
+                            </div>
+                        </div>
+                        <button onclick="switchTab('booking')" class="w-full py-2.5 bg-teal-600 text-white rounded-xl text-sm font-semibold hover:bg-teal-700 transition">Book Slot</button>
                     </div>
                 </div>
             </div>
@@ -321,7 +406,7 @@
                     </button>
                 </div>
                 <div class="grid grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl border shadow-sm"><p class="text-sm text-slate-500">Today's Appointments</p><p class="text-4xl font-bold text-navy-900 mt-1">12</p></div>
+                    <div class="bg-white p-6 rounded-2xl border shadow-sm"><p class="text-sm text-slate-500">Today's Appointments</p><p class="text-4xl font-bold text-navy-900 mt-1">14</p></div>
                     <div class="bg-white p-6 rounded-2xl border shadow-sm"><p class="text-sm text-slate-500">Pending Requests</p><p class="text-4xl font-bold text-amber-600 mt-1">3</p></div>
                     <div class="bg-white p-6 rounded-2xl border shadow-sm"><p class="text-sm text-slate-500">WhatsApp Status</p><p class="text-4xl font-bold text-teal-600 mt-1">OK</p></div>
                 </div>
@@ -347,12 +432,100 @@
         </section>
     </main>
 
+    <!-- AUTOMATION SIMULATOR MODAL -->
+    <div id="automation-modal" class="hidden fixed inset-0 z-50 bg-navy-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAutomationSimulator()" class="absolute top-6 right-6 text-slate-400 hover:text-navy-900">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xs uppercase font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">Live Automation Sandbox</span>
+                    <h3 class="text-2xl font-bold text-navy-900 mt-1">Simulate Integration Triggers</h3>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-sm">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Select Workflow Trigger</label>
+                    <select id="auto-trigger-type" class="w-full p-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <option value="whatsapp_confirm">WhatsApp Booking Confirmation</option>
+                        <option value="whatsapp_reminder">WhatsApp 2-Hour Reminder</option>
+                        <option value="gmail_classify">Gmail Enquiry Classification & Draft</option>
+                        <option value="calendar_sync">Google Calendar Event Sync</option>
+                    </select>
+                </div>
+                <div id="auto-simulation-output" class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs space-y-2 overflow-x-auto min-h-[120px]">
+                    <p class="text-slate-400">// Click run below to test webhook dispatch and status logs...</p>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-4 border-t border-slate-200">
+                <button onclick="closeAutomationSimulator()" class="px-5 py-2.5 rounded-xl bg-slate-200 text-slate-700 font-semibold hover:bg-slate-300 transition text-sm">Close</button>
+                <button onclick="runAutomationTrigger()" class="px-5 py-2.5 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition text-sm flex items-center gap-2">
+                    <i data-lucide="play" class="w-4 h-4"></i> Run Trigger Simulation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING AI CHATBOT WIDGET -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <div id="chat-window" class="hidden w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col mb-4">
+            <!-- Chat Header -->
+            <div class="bg-navy-900 text-white px-4 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+                    <div>
+                        <h4 class="font-bold text-sm">Demo Assistant — Vaishali</h4>
+                        <p class="text-[10px] text-slate-300">Online | Enquiry & Slot Assistance</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-slate-300 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <!-- Chat Messages -->
+            <div id="chat-messages" class="p-4 h-72 overflow-y-auto space-y-3 bg-slate-50 text-xs">
+                <div class="flex items-start gap-2">
+                    <div class="w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold shrink-0">AI</div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm space-y-1 max-w-[80%]">
+                        <p class="font-semibold text-slate-800">Hello! I am the virtual assistant for Demo Imaging, Vaishali.</p>
+                        <p class="text-slate-600">I can help you check test prerequisites, operating hours, or available slots. What scan are you planning?</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Quick Replies -->
+            <div class="p-2 bg-white border-t border-slate-200 flex flex-wrap gap-1.5 text-[11px]">
+                <button onclick="sendQuickReply('Ultrasound preparation')" class="px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 font-semibold hover:bg-teal-100 border border-teal-200">Ultrasound Prep</button>
+                <button onclick="sendQuickReply('CT scan prerequisites')" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold hover:bg-slate-200">CT Prep</button>
+                <button onclick="sendQuickReply('Operating hours')" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold hover:bg-slate-200">Hours</button>
+                <button onclick="sendQuickReply('Book an appointment')" class="px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 font-semibold hover:bg-teal-100 border border-teal-200">Book Now</button>
+            </div>
+            <!-- Chat Input -->
+            <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+                <input type="text" id="chat-input" placeholder="Ask about tests or slot availability..." class="flex-grow p-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-teal-500" onkeypress="handleChatKey(event)">
+                <button onclick="sendChatMessage()" class="p-2 rounded-xl bg-teal-600 text-white hover:bg-teal-700 transition">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Toggle Button -->
+        <button onclick="toggleChat()" class="w-14 h-14 rounded-full bg-teal-600 text-white shadow-xl flex items-center justify-center hover:bg-teal-700 transition hover:scale-105">
+            <i data-lucide="message-square" class="w-7 h-7"></i>
+        </button>
+    </div>
+
     <!-- FOOTER -->
     <footer class="bg-navy-900 text-slate-400 py-12 mt-20 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
-            <div><strong class="text-white text-lg">Demo Imaging</strong><p class="mt-2 text-xs">Vaishali, Ghaziabad. This is a sales prototype.</p></div>
-            <div><strong class="text-white">Quick Links</strong><ul class="mt-2 space-y-1 text-xs"><li><button onclick="switchTab('home')">Home</button></li><li><button onclick="switchTab('booking')">Book Appointment</button></li></ul></div>
-            <div><strong class="text-white">Contact</strong><p class="mt-2 text-xs">Plot 42, Sector 4, Vaishali<br>support@demoimaging.in</p></div>
+            <div><strong class="text-white text-lg">Demo Imaging</strong><p class="mt-2 text-xs">Plot 42, Sector 4, Vaishali, Ghaziabad. Sales prototype.</p></div>
+            <div><strong class="text-white">Quick Links</strong><ul class="mt-2 space-y-1 text-xs"><li><button onclick="switchTab('home')">Home</button></li><li><button onclick="switchTab('booking')">Book Appointment</button></li><li><button onclick="switchTab('services')">Test Prerequisites</button></li></ul></div>
+            <div><strong class="text-white">Contact</strong><p class="mt-2 text-xs">Phone: +91 98765 43210<br>Email: support@demoimaging.in</p></div>
         </div>
     </footer>
 
@@ -421,6 +594,69 @@
             appointments.forEach(app => {
                 tbody.innerHTML += `<tr class="border-b"><td class="p-4 font-mono font-bold">${app.ref}</td><td class="p-4">${app.name}</td><td class="p-4">${app.service}</td><td class="p-4">${app.datetime}</td><td class="p-4"><span class="px-2 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs">${app.status}</span></td></tr>`;
             });
+        }
+
+        // Automation Simulator Modal Logic
+        function openAutomationSimulator() {
+            document.getElementById('automation-modal').classList.remove('hidden');
+        }
+        function closeAutomationSimulator() {
+            document.getElementById('automation-modal').classList.add('hidden');
+        }
+        function runAutomationTrigger() {
+            const type = document.getElementById('auto-trigger-type').value;
+            const output = document.getElementById('auto-simulation-output');
+            output.innerHTML = `<p class="text-amber-400">Initializing webhook dispatch for ${type}...</p>`;
+            setTimeout(() => {
+                if (type === 'whatsapp_confirm') {
+                    output.innerHTML += `<p class="text-emerald-400">✓ WhatsApp Meta Cloud API Payload Dispatched</p><p class="text-slate-300">Status: Delivered (200 OK)</p>`;
+                } else if (type === 'whatsapp_reminder') {
+                    output.innerHTML += `<p class="text-emerald-400">✓ 2-Hour Automated Reminder Sent Successfully</p><p class="text-slate-300">Status: Delivered (200 OK)</p>`;
+                } else if (type === 'gmail_classify') {
+                    output.innerHTML += `<p class="text-purple-400">✓ Incoming Email Classified (Confidence: 98% - Enquiry)</p><p class="text-emerald-400">✓ Draft reply generated using approved template.</p>`;
+                } else {
+                    output.innerHTML += `<p class="text-blue-400">✓ Google Calendar API Event Synchronized</p><p class="text-slate-300">Status: Event active on Vaishali Centre Calendar.</p>`;
+                }
+            }, 600);
+        }
+
+        // Chatbot Logic
+        function toggleChat() {
+            document.getElementById('chat-window').classList.toggle('hidden');
+        }
+        function sendQuickReply(text) {
+            document.getElementById('chat-input').value = text;
+            sendChatMessage();
+        }
+        function handleChatKey(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        }
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const msg = input.value.trim();
+            if (!msg) return;
+            const container = document.getElementById('chat-messages');
+            
+            container.innerHTML += `<div class="flex items-start justify-end gap-2"><div class="bg-teal-600 text-white p-2 rounded-xl max-w-[80%]">${msg}</div></div>`;
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            setTimeout(() => {
+                let reply = "Thank you for contacting Demo Imaging, Vaishali. For bookings or specific prep guidelines, please check our Services & Test Prerequisites tab or call +91 98765 43210.";
+                const lower = msg.toLowerCase();
+                if (lower.includes('ultrasound') || lower.includes('prep')) {
+                    reply = "Ultrasound Prep: Upper abdomen requires 6 hours strict fasting. Pelvic scans require a full urinary bladder (4-5 glasses of water 1 hour prior).";
+                } else if (lower.includes('ct') || lower.includes('computed')) {
+                    reply = "CT Scan Prep: Contrast CT requires a serum creatinine blood report and 4-hour fasting. Please remove all metallic items.";
+                } else if (lower.includes('hour') || lower.includes('time')) {
+                    reply = "We are open Monday to Saturday from 7:00 AM to 9:00 PM, and Sunday from 8:00 AM to 2:00 PM.";
+                } else if (lower.includes('book') || lower.includes('slot')) {
+                    reply = "You can instantly book any slot using our 'Book Appointment' tab in the top navigation!";
+                }
+
+                container.innerHTML += `<div class="flex items-start gap-2"><div class="w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center font-bold shrink-0">AI</div><div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm max-w-[80%] text-slate-700">${reply}</div></div>`;
+                container.scrollTop = container.scrollHeight;
+            }, 500);
         }
     </script>
 </body>
